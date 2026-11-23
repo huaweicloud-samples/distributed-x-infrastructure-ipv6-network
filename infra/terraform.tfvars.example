@@ -1,0 +1,25 @@
+# ============================================================================
+# 华为云 IPv6 双栈 VPC — Terraform 变量示例
+#
+# 凭据（AK / SK）一律通过环境变量注入，禁止写入本文件或任何 .tfvars：
+#   export HW_ACCESS_KEY="<HW_ACCESS_KEY>"
+#   export HW_SECRET_KEY="<HW_SECRET_KEY>"
+#
+# 使用方式：
+#   cp terraform.tfvars.example terraform.tfvars
+#   vim terraform.tfvars    # 按需修改非凭据字段
+#   terraform apply
+# ============================================================================
+
+region      = "cn-north-4"
+name_prefix = "IPv6Sample"
+
+vpc_cidr = "10.0.0.0/16"
+
+azs = ["cn-north-4a", "cn-north-4b"]
+
+public_subnet_cidrs  = ["10.0.0.0/24", "10.0.1.0/24"]
+private_subnet_cidrs = ["10.0.2.0/24", "10.0.3.0/24"]
+
+# 私网 NACL 入站 IPv6 放行来源（默认 ::/0 仅做演示，生产应改为 VPC 实际 IPv6 CIDR）
+private_ipv6_inbound_cidr = "::/0"
